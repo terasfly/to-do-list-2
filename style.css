@@ -29,7 +29,7 @@ body {
     width: 400px;
     align-items: center;
     justify-content: flex-start;
-    background: url('/images/autumn.jpg');
+    background: url('autumn.jpg');
     height: 400px;
     background-position: center;
     background-repeat: no-repeat;
