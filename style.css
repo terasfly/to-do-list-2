@@ -9,8 +9,8 @@ body {
 }
 
 .container {
-    /* width: 700px; */
-    height: 100vh;
+    min-width: 390px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,15 +18,17 @@ body {
     justify-content: center;
     background: linear-gradient(to right, #FFA500, #FF7F00);
     /* This is a shade of orange, reminiscent of autumn leaves. */
-    padding: 20px;
+    /* padding: 20px; */
+    /* border-radius: 10px; */
 }
 
 .app {
     padding: 10px;
-    padding-top: 30px;
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
-    width: 400px;
+    min-width: 390px;
+    min-height: 100vh;
     align-items: center;
     justify-content: flex-start;
     background: url('autumn.jpg');
@@ -34,7 +36,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     box-shadow: rgba(0, 0, 0, 1.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
@@ -56,17 +58,18 @@ body {
     margin-top: 20px;
     padding: 5px;
     gap: 20px;
+    align-items: center;
 }
 
 .app__your-task input {
     font-size: 20px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 10px;
     outline: none;
     border: none;
     align-items: center;
     padding-left: 20px;
-    width: 200px;
+    min-width: 225px;
     background: linear-gradient(to right, #f12711, #f5af19);
     color: #ffff;
 }
@@ -75,3 +78,52 @@ body {
     text-align: center;
     color: #fff;
 }
+
+.app__button {
+    background: rgb(42, 87, 42);
+    color: #fff;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.7s;
+}
+
+.app__button:hover {
+    background: rgb(218, 233, 6);
+    cursor: pointer;
+}
+
+.app__tasks {
+    padding: 10px;
+    margin-top: 30px;
+    /* width: 225px; */
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.app__tasks--text {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    align-items: center;
+    padding-left: 20px;
+    min-width: 230px;
+    background: linear-gradient(to right, #f12711, #f5af19);
+    color: #ffff;
+    text-align: center;
+}
+
+.app__tasks--icon {
+    /* margin-left: 30px; */
+    font-size: 40px;
+    cursor: pointer;
+    color: red;
+}
+
+
+/* kai ant iphone 11 app width paddidin 414px */
