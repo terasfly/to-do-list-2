@@ -1,44 +1,20 @@
 const taskButton = document.getElementById('task-button');
 const newTaskList = document.querySelector('.add__tasks-list');
-const alertBox = document.getElementById('alert-box')
+const alertBox = document.getElementById('alert-box');
 
 taskButton.addEventListener('click', () => {
     const yourInput = document.getElementById('your-input');
     const inputValue = yourInput.value;
 
     if (inputValue.trim() === '') {
-        // Show the alert box
-        alertBox.style.display = 'block'
+        alertBox.style.display = 'block';
     } else {
-        // Hide the alert box
-        alertBox.style.display = 'none'
-
+        alertBox.style.display = 'none';
 
         const toUpper = inputValue.toUpperCase();
-        console.log(toUpper);
-
-        // Create a container for the task (text and icon)
-        const taskContainer = document.createElement('div');
-        taskContainer.classList.add('task-container');
-        taskContainer.style.display = 'flex'; // Set display to flex
-
-        // Create a div for the task text
-        const newTasks = document.createElement('div');
-        newTasks.classList.add('add__tasks-text');
-        newTasks.textContent = toUpper;
-
-        // Use the createIconBox function to get the icon element and pass the taskContainer
-        const newIcon = createIconBox(taskContainer);
-
-        // Append the text and icon to the task container
-        taskContainer.appendChild(newTasks);
-        taskContainer.appendChild(newIcon);
-
-        // Append the task container to the task list
-        newTaskList.appendChild(taskContainer);
-
-        // Clear the input field
-        yourInput.value = '';
+        addTask(toUpper); // Call the function to add the task
+        saveTaskToLocalStorage(toUpper); // Save the task to local storage
+        yourInput.value = ''; // Clear the input field
     }
 });
 
@@ -50,7 +26,52 @@ function createIconBox(taskContainer) {
 
     newIcon.addEventListener('click', () => {
         taskContainer.remove();
+        removeTaskFromLocalStorage(taskContainer.querySelector('.add__tasks-text').textContent);
     });
     return newIcon;
 }
-// Function to update localStorage with the current task list
+
+// Function to save a task to local storage
+function saveTaskToLocalStorage(task) {
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks.push(task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Function to remove a task from local storage
+function removeTaskFromLocalStorage(task) {
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    tasks = tasks.filter((t) => t !== task);
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// Function to add a task to the list
+function addTask(task) {
+    const taskContainer = document.createElement('div');
+    taskContainer.classList.add('task-container');
+    taskContainer.style.display = 'flex';
+
+    const newTasks = document.createElement('div');
+    newTasks.classList.add('add__tasks-text');
+    newTasks.textContent = task;
+
+    const newIcon = createIconBox(taskContainer);
+
+    taskContainer.appendChild(newTasks);
+    taskContainer.appendChild(newIcon);
+
+    newTaskList.appendChild(taskContainer);
+}
+
+// Load saved tasks from local storage when the page loads
+window.addEventListener('load', loadTasksFromLocalStorage);
+
+// Function to load saved tasks from local storage
+function loadTasksFromLocalStorage() {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks'));
+    if (savedTasks) {
+        savedTasks.forEach((task) => {
+            addTask(task);
+        });
+    }
+}
