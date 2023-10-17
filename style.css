@@ -31,7 +31,7 @@ body {
     min-height: 100vh;
     align-items: center;
     justify-content: flex-start;
-    background: url('autumn.jpg');
+    background: url('/images/autumn.jpg');
     height: 400px;
     background-position: center;
     background-repeat: no-repeat;
@@ -49,6 +49,7 @@ body {
     /* For compatibility with some browsers */
     background-clip: text;
     color: transparent;
+    margin-bottom: 30px;
     /* Make the text transparent */
 }
 
@@ -74,6 +75,15 @@ body {
     color: #ffff;
 }
 
+.app__new-tasks {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    padding: 5px;
+    gap: 20px;
+    align-items: center;
+}
+
 .app__your-task input::placeholder {
     text-align: center;
     color: #fff;
@@ -95,16 +105,22 @@ body {
     cursor: pointer;
 }
 
-.app__tasks {
-    padding: 10px;
-    margin-top: 30px;
-    /* width: 225px; */
+
+/* new block from Js */
+
+.add__tasks-list {
     display: flex;
-    flex-direction: row;
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+    margin-top: 10px;
+    color: #fff;
+    padding: 10px;
 }
 
-.app__tasks--text {
+.add__tasks-text {
     font-size: 20px;
     padding: 10px;
     border-radius: 10px;
@@ -112,18 +128,27 @@ body {
     border: none;
     align-items: center;
     padding-left: 20px;
-    min-width: 230px;
+    min-width: 200px;
     background: linear-gradient(to right, #f12711, #f5af19);
     color: #ffff;
-    text-align: center;
 }
 
-.app__tasks--icon {
-    /* margin-left: 30px; */
-    font-size: 40px;
-    cursor: pointer;
+.add__tasks--icon {
+    font-size: 30px;
     color: red;
+    margin-left: 50px;
 }
 
 
-/* kai ant iphone 11 app width paddidin 414px */
+/* alert box 
+ */
+
+.alert__box {
+    display: none;
+    width: 200px;
+    font-size: 23px;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(to left, #f12711, #f5af19);
+    color: #b7f707;
+}
