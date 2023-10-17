@@ -152,3 +152,11 @@ body {
     background: linear-gradient(to left, #f12711, #f5af19);
     color: #b7f707;
 }
+
+@media screen and (min-width: 414px) {
+    /* Your CSS styles for the iPhone 11 or devices with a minimum width of 414px go here */
+    .app {
+        min-width: 414px;
+    }
+    /* For example, you can target specific elements or apply general styles */
+}
